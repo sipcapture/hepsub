@@ -1,3 +1,4 @@
+<img src="https://github.com/sipcapture/homer-app/raw/master/public/img/homerseven.png" width=200 />
 
 # HEP PUBSUB Endpoint
 This application publishes itself as an endpoint for the HEP Pub-Sub API, announcing its endpoints providing on-demand complementary information about correlated sessions.
