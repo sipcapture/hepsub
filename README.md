@@ -1,7 +1,9 @@
 <img src="https://github.com/sipcapture/homer-app/raw/master/public/img/homerseven.png" width=100 />
 
 # HEP PUBSUB Endpoint
-HOMER Seven allows external agents to provide *"on-demand"* session details from external APIs, Databases, etc. and can use their results to argument internally available data using external resources, without requiring data duplication and allowing creative use of the core platform.
+    "does anyone know anything about this thing?"
+
+[HOMER](https://github.com/sipcapture/homer-app) Seven allows external agents to subscribe capabilities to provide *"on-demand"* session details from external APIs, databases, etc. to argument internally available data without requiring data duplication and allowing creative use of the core HEP platform.
 
 This application publishes itself as an endpoint for the HEP Pub-Sub API, announcing its endpoints providing on-demand complementary information about correlated sessions.
 
