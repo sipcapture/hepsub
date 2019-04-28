@@ -1,6 +1,6 @@
-FROM node:8-alpine
+FROM node:10-alpine
 
-RUN apk add --update git
+RUN apk add --update git bash
 
 RUN git clone https://github.com/sipcapture/hepsub /app
 WORKDIR /app
