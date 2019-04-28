@@ -1,0 +1,12 @@
+version: '2.1'
+
+services:
+  hepsub:
+    container_name: hepsub
+    image: sipcapture/hepsub:master
+    ports:
+      - "18088:18088"
+    environment:
+      - PUBLIC_IP=${PUBLIC_IP:-hepsub}
+      - HOMER_IP=${HOMER_IP:-homer}
+    restart: unless-stopped

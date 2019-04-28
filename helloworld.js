@@ -25,7 +25,7 @@ app.all('*', function(req, res, next) {
 app.post('/get/:id', function (req, res) {
   var data = { params: req.params, body: req.body }
   console.log('NEW API POST REQ', data);
-  res.send([{"hello": "world", "data": data}])
+  res.send({"hello": "world", "data": JSON.stringify(data)})
 })
 
 app.listen(port, () => console.log('API Server started',port))
@@ -38,6 +38,7 @@ var uuid = uuidv1();
 var ttl = config.service.ttl;
 
 var publish = function(){
+  try {
     var settings = config.service;
     settings.uuid = uuid;
     req({
@@ -48,9 +49,10 @@ var publish = function(){
     }, (err, res) => {
       if (err) {
         if (config.debug) console.log('REGISTER API ERROR', err.message)
-      } 
-      if (config.debug) console.log('REGISTER API',res.body.status)
+      }
+      if (config.debug) console.log('REGISTER API',res.body)
     })
+  } catch(e) { console.error(e) }
 }
 
 /* REGISTER SERVICE w/ TTL REFRESH */
