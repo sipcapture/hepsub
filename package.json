@@ -2,9 +2,9 @@
   "name": "hep-pubsub-hello",
   "version": "1.0.0",
   "description": "HEP pubsub API",
-  "main": "api.js",
+  "main": "helloworld.js",
   "scripts": {
-    "start": "node helloworld.js",
+    "start": "nodejs helloworld.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
