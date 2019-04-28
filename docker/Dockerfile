@@ -11,7 +11,7 @@ RUN npm install
 # Expose Ports
 EXPOSE 18088
 
-COPY ./docker/entrypoint.sh /entrypoint.sh
+COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]

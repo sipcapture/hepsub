@@ -4,7 +4,7 @@
   "description": "HEP pubsub API",
   "main": "helloworld.js",
   "scripts": {
-    "start": "nodejs helloworld.js",
+    "start": "node helloworld.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
