@@ -23,9 +23,10 @@ app.all('*', function(req, res, next) {
 
 /* HEP Post Paths */
 app.post('/get/:id', function (req, res) {
-  var data = req.body.callid;
+  if (config.debug) console.log('NEW API POST REQ', req.body);
+  var data = req.body.data;
+  if (!data) { res.send(500); return }
   if (!data.constructor === Array) data = [data];
-  if (config.debug) console.log('NEW API POST REQ', data);
   var settings = {
       "params": [
         {
@@ -41,21 +42,21 @@ app.post('/get/:id', function (req, res) {
 app.listen(port, () => console.log('API Server started',port))
 
 /* CGRATES API Proto */
-var getCGrates = function(data, res){
+var getCGrates = function(settings, res){
   try {
-    if (!settings || !settings.params) { res.send(404); return; }
+    if (!settings || !settings.params) { res.status(404).end(); return; }
     req({
       method: 'POST',
       url: config.cgrates_url || 'http://127.0.0.1:2080/jsonrpc',
       dataType: 'JSON',
-      data: data
-    }, (err, res) => {
+      data: settings
+    }, (err, response) => {
       if (err) {
         if (config.debug) console.log('CGRATES API ERROR', err.message)
-        res.send(500);
+        res.status(500).end();
       }
-      if (config.debug) console.log('CGRATES API RESPONSE',res.body)
-      res.send(res.body)
+      if (config.debug) console.log('CGRATES API RESPONSE',response.body)
+      res.send(response.body).end();
     })
   } catch(e) { console.error(e) }
 }
