@@ -24,7 +24,7 @@ app.all('*', function(req, res, next) {
 /* HEP Post Paths */
 app.post('/get/:id', function (req, res) {
   var data = req.body.callid;
-  if !(data.constructor === Array) data = [data];
+  if (!data.constructor === Array) data = [data];
   if (config.debug) console.log('NEW API POST REQ', data);
   var settings = {
       "params": [
@@ -78,9 +78,10 @@ var publish = function(){
       data: settings
     }, (err, res) => {
       if (err) {
-        if (config.debug) console.log('REGISTER API ERROR', err.message)
+        if (config.debug) console.log('REGISTER API ERROR', err.message);
+	process.exit(1);
       }
-      if (config.debug) console.log('REGISTER API',res.body)
+      if (config.debug) console.log('REGISTER API',res.body||'no response')
     })
   } catch(e) { console.error(e) }
 }
