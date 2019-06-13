@@ -12,6 +12,12 @@ This application publishes itself as an endpoint for the HEP Pub-Sub API, announ
 #### What does this do?
 This example project does not provide any actual logic and implements the basic pub-sub mechanism plus a sample endpoint returning JSON data to be extended with any desirable action such as looking up logs, events, packets and returning them to a standard or custom handler.
 
+For some working integrations check out:
+
+* https://github.com/sipcapture/hepsub-elastic
+* https://github.com/sipcapture/hepsub-cgrates
+* https://github.com/sipcapture/hepsub-voipmonitor
+
 ##### Install
 ```
 npm install
