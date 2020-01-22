@@ -1,5 +1,5 @@
 var config = {
-  backend: 'http://nyc01.sipcapture.io:88/api/v3/agent/subscribe',
+  backend: 'http://homer.app/api/v3/agent/subscribe',
   service: {
 	"uuid": Math.random().toString(36).substring(7),
 	"host":"nyc01.sipcapture.io",
