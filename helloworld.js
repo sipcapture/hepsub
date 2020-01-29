@@ -59,10 +59,15 @@ var publish = function(){
     if (config.debug) console.log("Body:", JSON.stringify(options));
 
     request(options, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            if (config.debug) console.log("BODY", body) // Print the shortened url.
+        if (!error && (response.statusCode == 200 || response.statusCode == 201)) {
+            if (config.debug) {              
+                console.log("RESPONSE API:", body) // Print the shortened url.
+            }
         } else {
-            if (config.debug) console.log('REGISTER API ERROR: ', body.message)
+            if (config.debug) {
+                if(body && body.message) console.log('REGISTER API ERROR: ', body.message);
+                else console.log('REGISTER UNKNOWN ERROR: ', error);
+            }
         }
     });        
 
