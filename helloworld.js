@@ -9,6 +9,7 @@ try {
 
 var express = require('express');
 const app = express();
+const request = require('request');
 var bodyParser = require("body-parser");
 app.use(bodyParser.json());
 
@@ -30,28 +31,41 @@ app.post('/get/:id', function (req, res) {
 
 app.listen(port, () => console.log('API Server started',port))
 
+
 // HEP PUBSUB Hooks
-var req = require('req-fast');
 var api = config.backend;
 const uuidv1 = require('uuid/v1');
 var uuid = uuidv1();
 var ttl = config.service.ttl;
+var token = config.token;
 
 var publish = function(){
+
   try {
     var settings = config.service;
-    settings.uuid = uuid;
-    req({
-      method: 'POST',
-      url: api,
-      dataType: 'JSON',
-      data: settings
-    }, (err, res) => {
-      if (err) {
-        if (config.debug) console.log('REGISTER API ERROR', err.message)
-      }
-      if (config.debug) console.log('REGISTER API',res.body)
-    })
+    settings.uuid = uuid;  
+    
+    const data = JSON.stringify(settings)
+
+    const options = {
+        url: api,
+        method: 'POST',
+        json: settings,
+        headers: {
+          'Auth-Token': token
+        }
+    }
+    
+    if (config.debug) console.log("Body:", JSON.stringify(options));
+
+    request(options, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            if (config.debug) console.log("BODY", body) // Print the shortened url.
+        } else {
+            if (config.debug) console.log('REGISTER API ERROR: ', body.message)
+        }
+    });        
+
   } catch(e) { console.error(e) }
 }
 
@@ -65,3 +79,5 @@ if (ttl) {
 }
 
 /* END */
+
+
