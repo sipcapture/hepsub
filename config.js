@@ -1,9 +1,9 @@
 var config = {
-  backend: 'http://homer.app:9080/api/v3/agent/subscribe',
-  token: 'XIAgdKTDQwKtSOvLXOLarFCrckWfHDIRtQQegvcDXhFRvISQvszTMLXuRNJtKuiEDNOurBEMtQURQjOx',
+  backend: 'http://de9.sipcapture.io:80/api/v3/agent/subscribe',
+  token: 'hEvLmrcXhMKAjIPILgycOJHVVxZfohztYDELNzKjLUeKWIuiksFdVWzZcMHnnmztDMsmkqCCFdypTVYK',
   service: {
 	"uuid": Math.random().toString(36).substring(7),
-	"host":"nyc01.sipcapture.io",
+	"host":"de9.sipcapture.io",
 	"port": 18088,
 	"protocol": "http",
 	"path": "/get",
