@@ -1,9 +1,9 @@
 var config = {
-  backend: 'http://your.homer.host/api/v3/agent/subscribe',
+  backend: 'http://homer.seven/api/v3/agent/subscribe',
   token: 'hEvLmrcXhMKAjIPILgycOJHVVxZfohztYDELNzKjLUeKWIuiksFdVWzZcMHnnmztDMsmkqCCFdypTVYK',
   service: {
 	"uuid": Math.random().toString(36).substring(7),
-	"host":"your.homer.host",
+	"host":"PUBLIC_IP_HERE",
 	"port": 18088,
 	"protocol": "http",
 	"path": "/get",
